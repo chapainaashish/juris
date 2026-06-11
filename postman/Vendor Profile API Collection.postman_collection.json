@@ -1,0 +1,2326 @@
+{
+  "info": {
+    "_postman_id": "03745d94-053b-4827-a42e-17b40d965d39",
+    "name": "Vendor Profile API Collection",
+    "description": "Complete API collection for vendor profile management with multi-step setup workflow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24381031"
+  },
+  "item": [
+    {
+      "name": "Reference Data",
+      "item": [
+        {
+          "name": "Get Vendor Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Languages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/languages",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "languages"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Bar Associations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/bar-associations",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "bar-associations"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Lawyer Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/lawyer/categories",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "lawyer",
+                "categories"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Lawyer Categories",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/lawyer/categories",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "lawyer",
+                    "categories"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "459"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"6c35eb4f-ecb0-4573-bdb1-04bd90695b46\",\n            \"title\": \"cat 1\",\n            \"description\": \"\",\n            \"subcategories\": [\n                {\n                    \"id\": \"222dac01-8bff-49c7-808e-f96c987f4465\",\n                    \"title\": \"sub cat 1\",\n                    \"lawyercategory\": \"6c35eb4f-ecb0-4573-bdb1-04bd90695b46\",\n                    \"description\": \"\",\n                    \"created_at\": \"2025-08-07T02:42:43.277999Z\",\n                    \"updated_at\": \"2025-08-07T02:42:43.278033Z\"\n                }\n            ],\n            \"created_at\": \"2025-08-07T02:42:26.184000Z\",\n            \"updated_at\": \"2025-08-07T02:42:26.184033Z\"\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Profile Setup Workflow",
+      "item": [
+        {
+          "name": "1. Start Profile Setup",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201 || pm.response.code === 200) {",
+                  "    var responseJson = pm.response.json();",
+                  "    pm.collectionVariables.set('session_token', responseJson.token);",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/start",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "start"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "1. Start Profile Setup",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/start",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "start"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "95"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"token\": \"0940cbac4d72428cafd6cc9ad89d1911\",\n    \"message\": \"New profile completion session created\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "2. Get Setup Progress",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/progress?token={{session_token}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "progress"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "{{session_token}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "2. Get Setup Progress",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/progress?token={{session_token}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "progress"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "{{session_token}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1459"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 3,\n    \"token\": \"0940cbac4d72428cafd6cc9ad89d1911\",\n    \"user\": 5,\n    \"category\": {\n        \"id\": 1,\n        \"name\": \"Lawyer\"\n    },\n    \"business_name\": \"Legal Solutions SRL\",\n    \"address\": {\n        \"id\": 3,\n        \"street\": \"Strada Victoriei 123\",\n        \"city\": \"Bucharest\",\n        \"postcode\": \"010101\",\n        \"country\": \"Romania\",\n        \"latitude\": 44.4268,\n        \"longitude\": 26.1025\n    },\n    \"languages\": [\n        {\n            \"id\": 1,\n            \"name\": \"English\",\n            \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/en.png\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Romanian\",\n            \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/ro.png\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"French\",\n            \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/fr.png\"\n        }\n    ],\n    \"avatar_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/avatars/sample.jpg\",\n    \"first_name_id\": \"Ion\",\n    \"last_name_id\": \"Popescu\",\n    \"legal_email\": \"ion.popescu@example.com\",\n    \"bar_association\": \"Baroul București\",\n    \"created_at\": \"2025-07-09T11:59:52.338646Z\",\n    \"last_updated\": \"2025-07-09T12:01:09.679038Z\",\n    \"is_completed\": false,\n    \"expires_at\": \"2025-07-16T11:59:52.338254Z\",\n    \"bio\": \"Experienced lawyer with 10+ years in corporate law\",\n    \"experience\": \"Corporate Law, Contract Negotiation, Legal Consulting\",\n    \"website\": \"https://legalsolutions.ro\",\n    \"whatsapp\": \"+40721234567\",\n    \"facebook\": \"https://facebook.com/legalsolutions\",\n    \"youtube\": \"https://youtube.com/legalsolutions\",\n    \"instagram\": \"https://instagram.com/legalsolutions\",\n    \"twitter\": \"https://twitter.com/legalsolutions\",\n    \"social_media_status\": true,\n    \"general_link\": \"https://general.com/legalsolutions\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Step1 UI - Select Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"category_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/category",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "category"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "3. Select Category",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"category_id\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/category",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "category"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "41"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Category saved successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Step2 UI - Add Business name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"business_name\": \"Legal Solutions SRL\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/business-name",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "business-name"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "4. Set Business Name",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"business_name\": \"Legal Solutions SRL\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/business-name",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "business-name"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Business name saved successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Step3 UI - Add address",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"street\": \"Strada Victoriei 123\",\n  \"city\": \"Bucharest\",\n  \"postcode\": \"010101\",\n  \"country\": \"Romania\",\n  \"latitude\": 44.4268,\n  \"longitude\": 26.1025\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/address",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "address"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "5. Set Address",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"street\": \"Strada Victoriei 123\",\n  \"city\": \"Bucharest\",\n  \"postcode\": \"010101\",\n  \"country\": \"Romania\",\n  \"latitude\": 44.4268,\n  \"longitude\": 26.1025\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/address",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "address"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "40"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Address saved successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Step4 UI - Select languages",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"language_ids\": [1, 2, 3]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/languages",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "languages"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "6. Select Languages",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"language_ids\": [1, 2, 3]\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/languages",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "languages"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Languages saved successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Step5 UI - Upload avatar file",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "token",
+                  "value": "{{session_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/avatar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "avatar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Step6 UI -Legal Info",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"first_name_id\": \"Ion\",\n  \"last_name_id\": \"Popescu\",\n  \"email\": \"ion.popescu@example.com\",\n  \"bar_association\": \"Baroul București\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/legal-info",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "legal-info"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "8. Set Legal Info (Lawyers Only)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"{{session_token}}\",\n  \"first_name_id\": \"Ion\",\n  \"last_name_id\": \"Popescu\",\n  \"email\": \"ion.popescu@example.com\",\n  \"bar_association\": \"Baroul București\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/legal-info",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "legal-info"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "50"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Legal information saved successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Final - Complete and Create the profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{session_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/complete",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "complete"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "10. Complete Profile",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"{{session_token}}\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/complete",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "complete"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1494"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Profile completed successfully\",\n    \"profile\": {\n        \"id\": 3,\n        \"user\": 5,\n        \"category\": {\n            \"id\": 1,\n            \"name\": \"Lawyer\"\n        },\n        \"business_name\": \"Legal Solutions SRL\",\n        \"address\": {\n            \"id\": 3,\n            \"street\": \"Strada Victoriei 123\",\n            \"city\": \"Bucharest\",\n            \"postcode\": \"010101\",\n            \"country\": \"Romania\",\n            \"latitude\": 44.4268,\n            \"longitude\": 26.1025\n        },\n        \"languages\": [\n            {\n                \"id\": 1,\n                \"name\": \"English\",\n                \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/en.png\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Romanian\",\n                \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/ro.png\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"French\",\n                \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/fr.png\"\n            }\n        ],\n        \"avatar_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/avatars/sample.jpg\",\n        \"legal_info\": {\n            \"id\": 3,\n            \"first_name_id\": \"Ion\",\n            \"last_name_id\": \"Popescu\",\n            \"email\": \"ion.popescu@example.com\",\n            \"bar_association\": \"Baroul București\"\n        },\n        \"is_completed\": true,\n        \"created_at\": \"2025-07-09T12:01:29.210652Z\",\n        \"updated_at\": \"2025-07-09T12:01:29.210680Z\",\n        \"bio\": \"Experienced lawyer with 10+ years in corporate law\",\n        \"experience\": \"Corporate Law, Contract Negotiation, Legal Consulting\",\n        \"website\": \"https://legalsolutions.ro\",\n        \"whatsapp\": \"+40721234567\",\n        \"facebook\": \"https://facebook.com/legalsolutions\",\n        \"youtube\": \"https://youtube.com/legalsolutions\",\n        \"instagram\": \"https://instagram.com/legalsolutions\",\n        \"twitter\": \"https://twitter.com/legalsolutions\",\n        \"social_media_status\": true,\n        \"general_link\": \"https://general.com/legalsolutions\",\n        \"media\": [],\n        \"certificates\": [],\n        \"service_categories\": []\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Will be added in Dashboard",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"token\": \"{{session_token}}\",\n    \"bio\": \"Experienced lawyer with 10+ years in corporate law\",\n    \"experience\": \"Corporate Law, Contract Negotiation, Legal Consulting\",\n    \"website\": \"https://legalsolutions.ro\",\n    \"whatsapp\": \"+40721234567\",\n    \"facebook\": \"https://facebook.com/legalsolutions\",\n    \"youtube\": \"https://youtube.com/legalsolutions\",\n    \"instagram\": \"https://instagram.com/legalsolutions\",\n    \"twitter\": \"https://twitter.com/legalsolutions\",\n    \"general_link\": \"https://general.com/legalsolutions\",\n    \"social_media_status\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/setup/additional-info",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "setup",
+                "additional-info"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "9. Set Additional Info",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"token\": \"{{session_token}}\",\n    \"bio\": \"Experienced lawyer with 10+ years in corporate law\",\n    \"experience\": \"Corporate Law, Contract Negotiation, Legal Consulting\",\n    \"website\": \"https://legalsolutions.ro\",\n    \"whatsapp\": \"+40721234567\",\n    \"facebook\": \"https://facebook.com/legalsolutions\",\n    \"youtube\": \"https://youtube.com/legalsolutions\",\n    \"instagram\": \"https://instagram.com/legalsolutions\",\n    \"twitter\": \"https://twitter.com/legalsolutions\",\n    \"general_link\": \"https://general.com/legalsolutions\",\n    \"social_media_status\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/setup/additional-info",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "setup",
+                    "additional-info"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "55"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Additional information saved successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Profile Management",
+      "item": [
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"business_name\": \"Update Legal Solutions SRL\",\n    \"language_ids\": [\n        1\n    ],\n    \"bio\": \"UExperienced lawyer with 10+ years in corporate law\",\n    \"experience\": \"UCorporate Law, Contract Negotiation, Legal Consulting\",\n    \"website\": \"https://legalsolutions.ro\",\n    \"whatsapp\": \"+0040721234567\",\n    \"facebook\": \"https://ufacebook.com/legalsolutions\",\n    \"youtube\": \"https://uyoutube.com/legalsolutions\",\n    \"instagram\": \"https://uinstagram.com/legalsolutions\",\n    \"twitter\": \"https://utwitter.com/legalsolutions\",\n    \"general_link\": \"https://ugeneral.com/legalsolutions\",\n    \"social_media_status\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/update",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Address",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/address",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "address"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Address",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"street\": \"UStrada Victoriei 123\",\n    \"city\": \"UBucharest\",\n    \"postcode\": \"020101\",\n    \"country\": \"URomania\",\n    \"latitude\": 41.4268,\n    \"longitude\": 21.1025\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/address",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "address"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Legal Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/legal-info",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "legal-info"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Legal Info",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name_id\": \"Updated Name\",\n  \"last_name_id\": \"Updated Surname\",\n  \"email\": \"updated@example.com\",\n  \"bar_association\": \"Baroul Cluj\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/legal-info",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "legal-info"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Avatar",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/avatar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "avatar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Avatar (URL)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/avatars/new-avatar.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/avatar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "avatar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Avatar (File)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/me/avatar",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "me",
+                "avatar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Media Management",
+      "item": [
+        {
+          "name": "List Media",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Media",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/{media_id}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                "{media_id}",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Media (URL)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Company Logo\",\n  \"description\": \"Official company logo\",\n  \"file_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/media/logo.jpg\",\n  \"file_type\": \"image\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Media (Image File)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Uploaded Image",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Image uploaded via file",
+                  "type": "text"
+                },
+                {
+                  "key": "file_type",
+                  "value": "image",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Media (Video File)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Company Video",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Promotional video",
+                  "type": "text"
+                },
+                {
+                  "key": "file_type",
+                  "value": "video",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Media (Document File)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Company Brochure",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Company information brochure",
+                  "type": "text"
+                },
+                {
+                  "key": "file_type",
+                  "value": "document",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f0827c7-ee66-47b0-87cd-b3b9b552ba97",
+                    {
+                      "actual": null,
+                      "name": "",
+                      "path": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Media",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Media Title\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/f9d9c80c-8c8e-461a-8671-344966d36dc0/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                "f9d9c80c-8c8e-461a-8671-344966d36dc0",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Media",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/media/{media_id}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "media",
+                "{media_id}",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Certificate Management",
+      "item": [
+        {
+          "name": "List Certificates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Certificate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/{certificate_id}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                "{certificate_id}",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Certificate (URL)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Law Degree\",\n  \"details\": \"Bachelor of Laws from University of Bucharest\",\n  \"file_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/certificates/degree.pdf\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Upload Certificate (File)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Professional Certificate",
+                  "type": "text"
+                },
+                {
+                  "key": "details",
+                  "value": "Professional certification details",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f0827c7-ef33-48f0-a1f4-cdf496c6a403",
+                    {
+                      "actual": null,
+                      "name": "",
+                      "path": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Certificate",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Certificate Title\",\n  \"details\": \"Updated certificate details\",\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/98cf4673-c454-43ef-88a3-2c75161fdfec/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                "98cf4673-c454-43ef-88a3-2c75161fdfec",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Deactivate Certificate",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"inactive\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/98cf4673-c454-43ef-88a3-2c75161fdfec/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                "98cf4673-c454-43ef-88a3-2c75161fdfec",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Certificate",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/certificates/98cf4673-c454-43ef-88a3-2c75161fdfec/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "certificates",
+                "98cf4673-c454-43ef-88a3-2c75161fdfec",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cloudinary Signatures",
+      "item": [
+        {
+          "name": "Get General Upload Signature",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/cloudinary/signature?folder_type=avatars",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "cloudinary",
+                "signature"
+              ],
+              "query": [
+                {
+                  "key": "folder_type",
+                  "value": "avatars"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Media Upload Signature",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/cloudinary/media-signature?file_type=image",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "cloudinary",
+                "media-signature"
+              ],
+              "query": [
+                {
+                  "key": "file_type",
+                  "value": "image"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Certificate Upload Signature",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/profiles/cloudinary/certificate-signature",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "cloudinary",
+                "certificate-signature"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Service Management",
+      "item": [
+        {
+          "name": "Service Category",
+          "item": [
+            {
+              "name": "List Service Categories",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/service-categories/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "service-categories",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Service Category",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/service-categories/d4afd85f-6bec-4b6e-a937-6f3fde137a33/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "service-categories",
+                    "d4afd85f-6bec-4b6e-a937-6f3fde137a33",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Service Category",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Legal Consulting\",\n  \"description\": \"Professional legal consulting services\",\n  \"is_active\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/service-categories/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "service-categories",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Service Category",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Legal Consulting\",\n  \"description\": \"Updated professional legal consulting services\",\n  \"is_active\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/service-categories/d4afd85f-6bec-4b6e-a937-6f3fde137a33/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "service-categories",
+                    "d4afd85f-6bec-4b6e-a937-6f3fde137a33",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Service Category",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Legal Consulting\",\n  \"description\": \"Updated professional legal consulting services\",\n  \"is_active\": true\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/service-categories/d4afd85f-6bec-4b6e-a937-6f3fde137a33/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "service-categories",
+                    "d4afd85f-6bec-4b6e-a937-6f3fde137a33",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Service",
+          "item": [
+            {
+              "name": "List Services",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Service",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/{service_id}/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    "{service_id}",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Service (JSON)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Contract Review\",\n  \"description\": \"Professional contract review and analysis\",\n  \"price\": 500,\n  \"tags\": [\"contract, legal, review\"],\n  \"category\": \"8f34a282-5455-478f-8e21-08cf3c4b1ce0\",\n  \"is_active\": true,\n  \"image_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/services/contract-review.jpg\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Service with Image Upload",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Legal Document Drafting",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Professional legal document drafting services",
+                      "type": "text"
+                    },
+                    {
+                      "key": "price",
+                      "value": "800",
+                      "type": "text"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "[legal, document, drafting]",
+                      "type": "text"
+                    },
+                    {
+                      "key": "category",
+                      "value": "e60b61ca-34cd-4766-8be0-1b9a739575e3",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "true",
+                      "type": "text"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/C:/Users/Aashish/Pictures/Screenshots/Screenshot 2025-06-18 123849.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Service (JSON)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Update Contract Review\",\n  \"description\": \"Professional contract review and analysis\",\n  \"price\": 500,\n  \"tags\": [\"contract, legal, review\"],\n  \"category\": \"e60b61ca-34cd-4766-8be0-1b9a739575e3\",\n  \"is_active\": true,\n  \"image_url\": \"https://res.cloudinary.com/yourcloud/image/upload/v1234567890/services/contract-review.jpg\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/f781969c-ee2e-4ff9-962a-af0813ccfe9b/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    "f781969c-ee2e-4ff9-962a-af0813ccfe9b",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Service with Image",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": [
+                        "",
+                        "/C:/Users/Aashish/Pictures/Screenshots/Screenshot 2025-06-18 110416.png"
+                      ]
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/f781969c-ee2e-4ff9-962a-af0813ccfe9b/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    "f781969c-ee2e-4ff9-962a-af0813ccfe9b",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Service Category Assignment",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": 2\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/{service_id}/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    "{service_id}",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Service",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/profiles/services/{service_id}/",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "services",
+                    "{service_id}",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{auth_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "auth_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzIzOTQ2LCJpYXQiOjE3NTU2ODc5NDYsImp0aSI6IjNmZjU4MTBjMmJjYjRlNWM4NjFhMmU3MDc4ODFhOThlIiwidXNlcl9pZCI6MTF9.8tVFbYN_AGg3GNHbc0GMn1y5EOAcd8bEQDz-JDBpXLM"
+    },
+    {
+      "key": "session_token",
+      "value": "ad20afa8c83240d08e6600a757b58a2c"
+    }
+  ]
+}

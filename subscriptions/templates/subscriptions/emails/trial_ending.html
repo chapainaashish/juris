@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Trial is Ending Soon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+        .header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Your Trial is Ending Soon</h1>
+        </div>
+        
+        <div class="content">
+            <p>Hello {{ user.first_name }},</p>
+            
+            <p>{{ message }}</p>
+            
+            <p>To continue using all features of our platform and keep your listing active, you'll need to activate your subscription.</p>
+            
+            <p>If you don't activate your subscription before the trial ends, your listing will be deactivated until you complete the payment process.</p>
+            
+            <p style="text-align: center; margin: 30px 0;">
+                <a href="#" class="button">Activate Your Subscription</a>
+            </p>
+            
+            <p>If you have any questions or need assistance, please don't hesitate to contact our support team.</p>
+            
+            <p>Thank you for being part of our platform!</p>
+        </div>
+        
+        <div class="footer">
+            <p>© {% now "Y" %} Your Company Name. All rights reserved.</p>
+            <p>You're receiving this email because you created a vendor account on our platform.</p>
+        </div>
+    </div>
+</body>
+</html>

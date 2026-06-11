@@ -1,0 +1,2754 @@
+{
+  "info": {
+    "_postman_id": "b76400ed-167f-4060-a166-5ddb166396c1",
+    "name": "Authentication API Collection",
+    "description": "Complete API collection with OTP authentication system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24381031"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Check Email Availability",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@admin.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/check-email",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "check-email"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Check Email Availability",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"admin@admin.com\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/check-email",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "check-email"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "64"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": false,\n    \"exist\": true,\n    \"message\": \"Email already exists.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Sign Up",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"phone_number\": \"{{user_phone}}\",\n    \"password\": \"Test123!@#\",\n    \"confirm_password\": \"Test123!@#\",\n    \"first_name\": \"John\",\n    \"role\": \"vendor\",\n    \"last_name\": \"Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/signup",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Sign Up",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"phone_number\": \"{{user_phone}}\",\n    \"password\": \"Test123!@#\",\n    \"confirm_password\": \"Test123!@#\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/signup",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "signup"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "100"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"User created. Verification email sent. The link will expire in 48 hours.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login (without 2FA)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (responseJson.access_token) {",
+                  "        pm.collectionVariables.set('access_token', responseJson.access_token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"password\": \"Info1227@#\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login (without 2FA)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"password\": \"Test123!@#\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "485"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDQ3NTA5MywiaWF0IjoxNzU0Mzg4NjkzLCJqdGkiOiJhYTdjZThjMzBjN2E0MmNjOTVhODk1YzVkNmJmNjJkZCIsInVzZXJfaWQiOjN9.kYyNCUG5JhTZApSHLP1bGsMl5DP5KfIC2aTOm8tAsbA; expires=Tue, 12 Aug 2025 10:11:33 GMT; HttpOnly; Max-Age=604800; Path=/; SameSite=Lax"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0NDI0NjkzLCJpYXQiOjE3NTQzODg2OTMsImp0aSI6IjcwNDFiMmY0Y2E2ZDRhY2VhNDZkMjFmMTc0YTlhMjg0IiwidXNlcl9pZCI6M30.aWbudftGkxWe7oINPNb4zIbL94mF8DxxDfe-mmVq1hI\",\n    \"user\": {\n        \"id\": 3,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+9779840221387\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"role\": \"vendor\",\n        \"vendor_type\": null,\n        \"is_complete\": false,\n        \"can_access_dashboard\": false,\n        \"vendor_profile\": null\n    }\n}"
+            },
+            {
+              "name": "Login (without 2FA)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"password\": \"Test123!@#\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1510"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDQ3NTU4MSwiaWF0IjoxNzU0Mzg5MTgxLCJqdGkiOiJkZDMyZTE1MDdkODU0ODhiYWQ5OGM3NDI4MTBmNzVjOSIsInVzZXJfaWQiOjN9.B-IWWIUriVdcfrK4yiV_532xW2-xCDCctyBvEQTH52A; expires=Tue, 12 Aug 2025 10:19:41 GMT; HttpOnly; Max-Age=604800; Path=/; SameSite=Lax"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0NDI1MTgxLCJpYXQiOjE3NTQzODkxODEsImp0aSI6IjJkNTY1Njg2OGE3ZTQwNzliNTRjYjVjOWQ0MGExOTdjIiwidXNlcl9pZCI6M30._GeD28VMmK6ACe-JCkONzrU_A9abMX7I4XFzpSM7Iuk\",\n    \"user\": {\n        \"id\": 3,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+9779840221387\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"role\": \"vendor\",\n        \"vendor_type\": \"lawyer\",\n        \"is_complete\": true,\n        \"can_access_dashboard\": true,\n        \"vendor_profile\": {\n            \"business_name\": \"Legal Solutions SRL\",\n            \"category\": \"Lawyer\",\n            \"avatar_url\": null,\n            \"bio\": \"Experienced lawyer with 10+ years in corporate law\",\n            \"experience\": \"Corporate Law, Contract Negotiation, Legal Consulting\",\n            \"website\": \"https://legalsolutions.ro\",\n            \"whatsapp\": \"+40721234567\",\n            \"facebook\": \"https://facebook.com/legalsolutions\",\n            \"youtube\": \"https://youtube.com/legalsolutions\",\n            \"instagram\": \"https://instagram.com/legalsolutions\",\n            \"twitter\": \"https://twitter.com/legalsolutions\",\n            \"general_link\": \"https://general.com/legalsolutions\",\n            \"is_active\": true,\n            \"address_street\": \"Strada Victoriei 123\",\n            \"address_city\": \"Bucharest\",\n            \"address_postcode\": \"010101\",\n            \"address_country\": \"Romania\",\n            \"address_latitude\": 44.4268,\n            \"address_longitude\": 26.1025,\n            \"languages\": [\n                {\n                    \"name\": \"English\",\n                    \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/en.png\"\n                },\n                {\n                    \"name\": \"Romanian\",\n                    \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/ro.png\"\n                },\n                {\n                    \"name\": \"French\",\n                    \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/fr.png\"\n                }\n            ]\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login (with 2FA)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (responseJson.require_2fa && responseJson.verification_token) {",
+                  "        pm.collectionVariables.set('verification_token', responseJson.verification_token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"password\": \"Test123!@#\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login (with 2FA)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{user_email}}\",\n    \"password\": \"Test123!@#\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "303"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": false,\n    \"require_2fa\": true,\n    \"detail\": \"2FA is enabled. Verification code has been sent to your phone.\",\n    \"verification_token\": \"eyJ1c2VyX2lkIjozLCJ0aW1lc3RhbXAiOiIyMDI1LTA4LTA1VDEwOjExOjQ5LjA4MjMzNyswMDowMCIsImFjdGlvbiI6IjJmYV92ZXJpZmljYXRpb24ifQ:1ujEe5:C-6ZXE2K2VmhdW_dmwqz3PCBsRm8L_ygChJa5il1Tjg\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Verify OTP (2FA)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (responseJson.access_token) {",
+                  "        pm.collectionVariables.set('access_token', responseJson.access_token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"verification_token\": \"{{verification_token}}\",\n    \"otp\": \"853684\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/verify-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "verify-otp"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Verify OTP (2FA)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"verification_token\": \"{{verification_token}}\",\n    \"otp\": \"853684\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/verify-otp",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "verify-otp"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "485"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDQ3NTE2NiwiaWF0IjoxNzU0Mzg4NzY2LCJqdGkiOiI1NjJkZWZjNzM5MGM0ODFkYmJjMzAyMGVlZDEzOWQ4YiIsInVzZXJfaWQiOjN9.9Ep8HYS1UcNvDRTUTHboO7WjJ4YWJTdtuW9xEHXGErI; expires=Tue, 12 Aug 2025 10:12:47 GMT; HttpOnly; Max-Age=604800; Path=/; SameSite=Lax"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0NDI0NzY2LCJpYXQiOjE3NTQzODg3NjYsImp0aSI6IjkyMjhmNzFhOTExNjQ4ZTVhMDNmZDVhOWI2ZTg2NmRjIiwidXNlcl9pZCI6M30.L1_XmKd1avI-eAdrt7MBdjCngmJ5HLsxrxQsqmj-nOo\",\n    \"user\": {\n        \"id\": 3,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+9779840221387\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"role\": \"vendor\",\n        \"vendor_type\": null,\n        \"is_complete\": false,\n        \"can_access_dashboard\": false,\n        \"vendor_profile\": null\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Resend OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"verification_token\": \"{{verification_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/resend-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "resend-otp"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Resend OTP",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"verification_token\": \"{{verification_token}}\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/resend-otp",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "resend-otp"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "80"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"A new verification code has been sent to your phone.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Google Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (responseJson.access_token) {",
+                  "        pm.collectionVariables.set('access_token', responseJson.access_token);",
+                  "    } else if (responseJson.require_2fa && responseJson.verification_token) {",
+                  "        pm.collectionVariables.set('verification_token', responseJson.verification_token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"access_token\": \"your-google-oauth-token-here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/google-login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "google-login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Google Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"access_token\": \"your-google-oauth-token-here\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/google-login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "google-login"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "60"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": false,\n    \"detail\": \"Your credentials aren't allowed\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Refresh Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (responseJson.access_token) {",
+                  "        pm.collectionVariables.set('access_token', responseJson.access_token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/token/refresh",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "token",
+                "refresh"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Refresh Token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/token/refresh",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "token",
+                    "refresh"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "485"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDQ3NTIzOSwiaWF0IjoxNzU0Mzg4ODM5LCJqdGkiOiI1YjM2ZDRmMzRjYTU0ZjRjOTNiOWUxZTlmNjM1NmE1MSIsInVzZXJfaWQiOjN9.ZIcumQ3q7x-gG0sABienG6noTsIZJXtTElUCYO7mNNU; expires=Tue, 12 Aug 2025 10:13:59 GMT; HttpOnly; Max-Age=604800; Path=/; SameSite=Lax"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0NDI0ODM5LCJpYXQiOjE3NTQzODg4MzksImp0aSI6ImQxOTFjNTQyOWY2ZTRlZGI5MWQ3Mjc4NzliNDA0ZjMyIiwidXNlcl9pZCI6M30.NzherSOalOnSdPsU_ZJ4oEW9Puy6f8Vp644LSnRjnnY\",\n    \"user\": {\n        \"id\": 3,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+9779840221387\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"role\": \"vendor\",\n        \"vendor_type\": null,\n        \"is_complete\": false,\n        \"can_access_dashboard\": false,\n        \"vendor_profile\": null\n    }\n}"
+            },
+            {
+              "name": "Refresh Token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/token/refresh",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "token",
+                    "refresh"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1510"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDQ3NTU5NywiaWF0IjoxNzU0Mzg5MTk3LCJqdGkiOiJhN2VjODkxYzc2N2Y0ZDM1YjI0ODVlZWZjOTQyYWE5ZCIsInVzZXJfaWQiOjN9.O4vzIgmkmyD_v_GL46xPrommFpCjoEjWg1AHUQY0LOA; expires=Tue, 12 Aug 2025 10:19:57 GMT; HttpOnly; Max-Age=604800; Path=/; SameSite=Lax"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0NDI1MTk3LCJpYXQiOjE3NTQzODkxOTcsImp0aSI6ImE0ZjY2YTJiYWFiODRkZDM5NmI1MjE3N2UwMTU0MTJjIiwidXNlcl9pZCI6M30.9aVdcxWaiTH2LY2RjfaKQ7OQn4FF_Rkl70zwzOyNaUA\",\n    \"user\": {\n        \"id\": 3,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+9779840221387\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"role\": \"vendor\",\n        \"vendor_type\": \"lawyer\",\n        \"is_complete\": true,\n        \"can_access_dashboard\": true,\n        \"vendor_profile\": {\n            \"business_name\": \"Legal Solutions SRL\",\n            \"category\": \"Lawyer\",\n            \"avatar_url\": null,\n            \"bio\": \"Experienced lawyer with 10+ years in corporate law\",\n            \"experience\": \"Corporate Law, Contract Negotiation, Legal Consulting\",\n            \"website\": \"https://legalsolutions.ro\",\n            \"whatsapp\": \"+40721234567\",\n            \"facebook\": \"https://facebook.com/legalsolutions\",\n            \"youtube\": \"https://youtube.com/legalsolutions\",\n            \"instagram\": \"https://instagram.com/legalsolutions\",\n            \"twitter\": \"https://twitter.com/legalsolutions\",\n            \"general_link\": \"https://general.com/legalsolutions\",\n            \"is_active\": true,\n            \"address_street\": \"Strada Victoriei 123\",\n            \"address_city\": \"Bucharest\",\n            \"address_postcode\": \"010101\",\n            \"address_country\": \"Romania\",\n            \"address_latitude\": 44.4268,\n            \"address_longitude\": 26.1025,\n            \"languages\": [\n                {\n                    \"name\": \"English\",\n                    \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/en.png\"\n                },\n                {\n                    \"name\": \"Romanian\",\n                    \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/ro.png\"\n                },\n                {\n                    \"name\": \"French\",\n                    \"icon_url\": \"https://res.cloudinary.com/your-cloud-name/image/upload/flags/fr.png\"\n                }\n            ]\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"logout_all\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "logout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Logout",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"logout_all\": false\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/logout",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "52"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refresh_token=\"\"; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; Path=/"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Successfully logged out.\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Email Change",
+      "item": [
+        {
+          "name": "Request Email Change",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"new_email\": \"newemail@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/change-email/request",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "change-email",
+                "request"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Request Email Change",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"new_email\": \"newemail@example.com\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/change-email/request",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "change-email",
+                    "request"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "112"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Verification code sent to your new email address.\",\n    \"new_email\": \"newemail@example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Verify Email Change",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"verification_code\": \"968065\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/change-email/verify",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "change-email",
+                "verify"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Verify Email Change",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"verification_code\": \"968065\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/change-email/verify",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "change-email",
+                    "verify"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "177"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Email address successfully changed.\",\n    \"user\": {\n        \"id\": 8,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+1234567890\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Resend Email Change Code",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/change-email/resend",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "change-email",
+                "resend"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Resend Email Change Code",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/change-email/resend",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "change-email",
+                    "resend"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Verification code sent to your new email address.\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2FA Management",
+      "item": [
+        {
+          "name": "Disable 2FA",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"enable\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/toggle-2fa",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "toggle-2fa"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Disable 2FA",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"enable\": false\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/toggle-2fa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "toggle-2fa"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "160"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"2FA has been disabled.\",\n    \"user\": {\n        \"id\": 8,\n        \"email\": \"test@example.com\",\n        \"phone_number\": \"+1234567890\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Enable 2FA",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"enable\": true,\n    \"phone_number\": \"{{user_phone}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/toggle-2fa",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "toggle-2fa"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Enable 2FA",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"enable\": true,\n    \"phone_number\": \"{{user_phone}}\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/toggle-2fa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "toggle-2fa"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "159"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"2FA has been enabled.\",\n    \"user\": {\n        \"id\": 8,\n        \"email\": \"test@example.com\",\n        \"phone_number\": \"+1234567890\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Password Management",
+      "item": [
+        {
+          "name": "Change Password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"current_password\": \"Test123!@#\",\n    \"new_password\": \"NewTest123!@#\",\n    \"confirm_new_password\": \"NewTest123!@#\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/change-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "change-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Change Password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"current_password\": \"Test123!@#\",\n    \"new_password\": \"NewTest123!@#\",\n    \"confirm_new_password\": \"NewTest123!@#\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/change-password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "change-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "102"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Password changed successfully. Please log in again with your new password.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Forgot Password (Email)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identifier\": \"{{user_email}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/forgot-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Forgot Password (Email)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"identifier\": \"{{user_email}}\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/forgot-password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "138"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"If an account exists with this information, you will receive password reset instructions.\",\n    \"reset_type\": \"email\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Forgot Password (SMS)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identifier\": \"{{user_phone}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/forgot-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Forgot Password (SMS)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"identifier\": \"{{user_phone}}\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/forgot-password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "136"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"If an account exists with this information, you will receive password reset instructions.\",\n    \"reset_type\": \"sms\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Reset Password (Email Token)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"token\": \"0KZK4lxTTD3XaEzCYBHfuke1pbmu5LOlE_atw1MLEuk\",\n    \"new_password\": \"ResetTest123!@#\",\n    \"confirm_new_password\": \"ResetTest123!@#\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/reset-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "reset-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Reset Password (Email Token)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"token\": \"0KZK4lxTTD3XaEzCYBHfuke1pbmu5LOlE_atw1MLEuk\",\n    \"new_password\": \"ResetTest123!@#\",\n    \"confirm_new_password\": \"ResetTest123!@#\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/reset-password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "reset-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "94"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Password reset successfully. Please log in with your new password.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Reset Password (SMS OTP)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"otp\": \"907111\",\n    \"identifier\": \"{{user_phone}}\",\n    \"new_password\": \"ResetTest123!@#\",\n    \"confirm_new_password\": \"ResetTest123!@#\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/reset-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "reset-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Reset Password (SMS OTP)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"otp\": \"907111\",\n    \"identifier\": \"{{user_phone}}\",\n    \"new_password\": \"ResetTest123!@#\",\n    \"confirm_new_password\": \"ResetTest123!@#\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/reset-password",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "reset-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "94"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Password reset successfully. Please log in with your new password.\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Resend Password Reset OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"identifier\": \"{{user_phone}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/resend-reset-otp",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "resend-reset-otp"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Resend Password Reset OTP",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"identifier\": \"{{user_phone}}\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/resend-reset-otp",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "resend-reset-otp"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "68"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"New verification code sent successfully.\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Profile Management",
+      "item": [
+        {
+          "name": "Get User Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/user/profile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get User Profile",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/user/profile",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "130"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"user\": {\n        \"id\": 8,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+1234567890\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"first_name\": \"John Updated\",\n    \"last_name\": \"Doe Updated\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/profile/update",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "profile",
+                "update"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Profile",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"first_name\": \"John Updated\",\n    \"last_name\": \"Doe Updated\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/profile/update",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "profile",
+                    "update"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "PATCH, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "187"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Profile updated successfully.\",\n    \"user\": {\n        \"id\": 8,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"+1234567890\",\n        \"first_name\": \"John Updated\",\n        \"last_name\": \"Doe Updated\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Phone Number",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone_number\": \"23232323232323\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/user/update-phone",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "update-phone"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Phone Number",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"phone_number\": \"23232323232323\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/user/update-phone",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "user",
+                    "update-phone"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "POST, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "195"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Server",
+                  "value": "daphne"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"detail\": \"Phone number updated successfully.\",\n    \"user\": {\n        \"id\": 8,\n        \"email\": \"newemail@example.com\",\n        \"phone_number\": \"23232323232323\",\n        \"first_name\": \"John Updated\",\n        \"last_name\": \"Doe Updated\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "verification_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user_email",
+      "value": "newemail@example.com",
+      "type": "string"
+    },
+    {
+      "key": "user_phone",
+      "value": "+1234567890",
+      "type": "string"
+    }
+  ]
+}

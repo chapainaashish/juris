@@ -1,0 +1,21 @@
+Payment Failed
+
+Hello {{ user.first_name }},
+
+{{ message }}
+
+Your subscription is now in a past due state. To avoid service interruption, please update your payment method as soon as possible.
+
+Common reasons for payment failure include:
+- Expired credit card
+- Insufficient funds
+- Card issuer declined the transaction
+- Incorrect card information
+
+To update your payment method, please visit:
+https://juris.com
+
+If you have any questions or need assistance, please contact our support team.
+
+© {% now "Y" %} Your Company Name. All rights reserved.
+You're receiving this email because you have an active subscription on our platform.

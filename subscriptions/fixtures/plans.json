@@ -1,0 +1,50 @@
+[
+    {
+        "model": "subscriptions.subscriptionplan",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "Lawyer Basic Plan",
+            "description": "Standard plan for lawyers with profile listing, client management, and basic analytics.",
+            "price_monthly": "199.00",
+            "stripe_price_id": "prod_SB2EQsZfCQuoAS",
+            "is_active": true
+        }
+    },
+    {
+        "model": "subscriptions.subscriptionplan",
+        "pk": 2,
+        "fields": {
+            "category": 2,
+            "name": "Notary Basic Plan",
+            "description": "Standard plan for notaries with profile listing, client management, and basic analytics.",
+            "price_monthly": "149.00",
+            "stripe_price_id": "prod_SB2DyThntCK0GK",
+            "is_active": true
+        }
+    },
+    {
+        "model": "subscriptions.subscriptionplan",
+        "pk": 3,
+        "fields": {
+            "category": 3,
+            "name": "Accountant Basic Plan",
+            "description": "Standard plan for accountants with profile listing, client management, and basic analytics.",
+            "price_monthly": "179.00",
+            "stripe_price_id": "prod_SB2CmGTqCV1eIv",
+            "is_active": true
+        }
+    },
+    {
+        "model": "subscriptions.subscriptionplan",
+        "pk": 4,
+        "fields": {
+            "category": 4,
+            "name": "Translator Basic Plan",
+            "description": "Standard plan for translator with profile listing, client management, and basic analytics.",
+            "price_monthly": "179.00",
+            "stripe_price_id": "prod_SAgClGU5dAKAuQ",
+            "is_active": true
+        }
+    }
+]

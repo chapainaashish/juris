@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgres:17
+    container_name: juris_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: juris_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  web:
+    build: .
+    container_name: juris_backend
+    env_file:
+      - .env  
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  celery:
+    build: .
+    container_name: juris_celery
+    command: celery -A juris worker --loglevel=info
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    environment:
+      - C_FORCE_ROOT=1
+
+  stripe-cli:
+    image: stripe/stripe-cli
+    container_name: juris_stripe_cli
+    command: listen --forward-to web:8000/stripe/webhook/
+    environment:
+      - STRIPE_API_KEY=${STRIPE_SECRET_KEY}
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  redis_data:

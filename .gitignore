@@ -1,0 +1,14 @@
+myenv/
+raw-data/
+__pycache__/
+*.pyc
+*.pyo
+logs/
+django_debug.log
+staticfiles/
+.env
+*.sqlite3
+*.db
+media/
+.DS_Store
+Thumbs.db

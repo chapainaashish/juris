@@ -1,0 +1,440 @@
+{
+  "info": {
+    "_postman_id": "8030d361-27ae-41c2-ac0f-0d1714eafcab",
+    "name": "Subscription Management API Collection",
+    "description": "Complete subscription system with Stripe integration, payment methods, vouchers, notifications, and invoice management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24381031"
+  },
+  "item": [
+    {
+      "name": "Subscription Management",
+      "item": [
+        {
+          "name": "Get Vendor Subscription",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription"
+              ]
+            },
+            "description": "Get current subscription details for the authenticated vendor"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Subscription Plans",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/plans",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "plans"
+              ]
+            },
+            "description": "Retrieve all available subscription plans based on vendor category"
+          },
+          "response": []
+        },
+        {
+          "name": "Activate Subscription",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_method_id\": \"{{payment_method_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/subscription/activate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "activate"
+              ]
+            },
+            "description": "Activate subscription using a payment method. Get the payment method first from payment methods endpoint."
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Subscription",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/cancel",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "cancel"
+              ]
+            },
+            "description": "Cancel the current active subscription"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payment Methods",
+      "item": [
+        {
+          "name": "Get Payment Methods",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/payment-methods",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "payment-methods"
+              ]
+            },
+            "description": "Get all saved payment methods for the authenticated user"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Payment Method Setup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/payment-methods/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "payment-methods",
+                ""
+              ]
+            },
+            "description": "Generates a SetupIntent for adding a new payment method. Use this to collect card details on frontend."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Payment Method",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/payment-methods/{{payment_method_db_id}}/delete/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "payment-methods",
+                "{{payment_method_db_id}}",
+                "delete",
+                ""
+              ]
+            },
+            "description": "Delete a saved payment method by its database ID"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Invoices & Billing",
+      "item": [
+        {
+          "name": "Get Subscription Invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/invoices",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "invoices"
+              ]
+            },
+            "description": "Get all invoices for the vendor's subscription"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Details",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Vouchers & Discounts",
+      "item": [
+        {
+          "name": "Validate Voucher",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"{{voucher_code}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/subscription/vouchers/validate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "vouchers",
+                "validate"
+              ]
+            },
+            "description": "Validate a voucher code before applying it to subscription"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get Notifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/notifications/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "notifications",
+                ""
+              ]
+            },
+            "description": "Get all subscription-related notifications for the vendor"
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Notification As Read",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/notifications/{{notification_id}}/mark_as_read/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "notifications",
+                "{{notification_id}}",
+                "mark_as_read",
+                ""
+              ]
+            },
+            "description": "Mark a specific notification as read by its ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Mark All Notifications As Read",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/subscription/notifications/mark_all_as_read/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "subscription",
+                "notifications",
+                "mark_all_as_read",
+                ""
+              ]
+            },
+            "description": "Mark all notifications as read for the authenticated vendor"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhooks & Testing",
+      "item": [
+        {
+          "name": "Test Stripe Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_method_id\": \"{{payment_method_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/stripe/webhook/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "stripe",
+                "webhook",
+                ""
+              ]
+            },
+            "description": "Test endpoint for Stripe webhook events. Use for development testing."
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{auth_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Set dynamic variables if needed",
+          "// Example: Set current timestamp",
+          "pm.environment.set('timestamp', Date.now());"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Common test scripts for subscription endpoints",
+          "",
+          "// Test for successful responses",
+          "pm.test('Status code is successful', function () {",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+          "});",
+          "",
+          "// Save payment method ID from payment methods response",
+          "if (pm.info.requestName === 'Get Payment Methods' && pm.response.code === 200) {",
+          "    const responseJson = pm.response.json();",
+          "    if (responseJson.length > 0 && responseJson[0].stripe_payment_method_id) {",
+          "        pm.environment.set('payment_method_id', responseJson[0].stripe_payment_method_id);",
+          "        console.log('Payment method ID updated:', responseJson[0].stripe_payment_method_id);",
+          "    }",
+          "}",
+          "",
+          "// Save subscription details",
+          "if (pm.info.requestName === 'Get Vendor Subscription' && pm.response.code === 200) {",
+          "    const responseJson = pm.response.json();",
+          "    if (responseJson.subscription_id) {",
+          "        pm.environment.set('subscription_id', responseJson.subscription_id);",
+          "        console.log('Subscription ID saved:', responseJson.subscription_id);",
+          "    }",
+          "}",
+          "",
+          "// Log response for debugging",
+          "if (pm.response.code >= 400) {",
+          "    console.log('Error response:', pm.response.text());",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "auth_token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzI0NDc5LCJpYXQiOjE3NTU2ODg0NzksImp0aSI6IjcxODI1YTgzZjYxNjRlMTY5ZjJiMDVjYjExMDFhMmYyIiwidXNlcl9pZCI6MTF9.89zgH7dnoZ4mdeJn5xboiIQf0ctCXiOeZIumpIHGplU"
+    },
+    {
+      "key": "payment_method_id",
+      "value": "pm_1RGge0BGScv1bd2qLCllhs7f"
+    },
+    {
+      "key": "notification_id",
+      "value": "2"
+    },
+    {
+      "key": "payment_method_db_id",
+      "value": "6"
+    },
+    {
+      "key": "voucher_code",
+      "value": "508022"
+    }
+  ]
+}

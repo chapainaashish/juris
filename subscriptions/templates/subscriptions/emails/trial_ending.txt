@@ -1,0 +1,18 @@
+Your Trial is Ending Soon
+
+Hello {{ user.first_name }},
+
+{{ message }}
+
+To continue using all features of our platform and keep your listing active, you'll need to activate your subscription.
+
+If you don't activate your subscription before the trial ends, your listing will be deactivated until you complete the payment process.
+
+Please visit https://juris.com to activate your subscription.
+
+If you have any questions or need assistance, please don't hesitate to contact our support team.
+
+Thank you for being part of our platform!
+
+© {% now "Y" %} Your Company Name. All rights reserved.
+You're receiving this email because you created a vendor account on our platform.
