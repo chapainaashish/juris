@@ -1,15 +1,23 @@
 # Juris - Legal Services Marketplace
 
-A full-featured backend API for a legal services marketplace connecting clients with lawyers (and other legal professionals). Built with Django REST Framework, it handles everything from booking and escrew payments to real-time video consultations and subscription billing.
+A full-featured backend API for a legal services marketplace connecting clients with lawyers (and other legal professionals). Built with Django REST Framework, it handles everything from booking and escrew payments to real-time video consultations and subscription billing. The platform handles:
+
+- Role-based user accounts (client vs. vendor)
+- Multi-step vendor onboarding with 2FA
+- Calendar supports for lawyer's availability and unavailability
+- Appointment booking with Stripe payment processing and an escrow fund model
+- Live audio/video consultations via Agora
+- Lawyer subscription billing via Stripe
+- Vendor wallet system with KYC verification
+- Real-time in-app notifications via WebSockets
 
 ## Table of Contents
 
-- [Overview](#overview)
+- [Features](#features)
 - [Documentation](#documentation)
   - [Guides](#guides)
   - [System Diagrams](#system-diagrams)
   - [Postman Collections](#postman-collections)
-- [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
 - [Workflows](#workflows)
@@ -21,53 +29,6 @@ A full-featured backend API for a legal services marketplace connecting clients 
 - [Setup & Installation](#setup--installation)
 - [Environment Variables](#environment-variables)
 - [Management Commands](#management-commands)
-
-## Overview
-
-Juris is a marketplace where clients can discover and book appointments with legal professionals (lawyers, notaries, accountants, translators). The platform handles:
-
-- Role-based user accounts (client vs. vendor)
-- Multi-step vendor onboarding
-- Appointment booking with Stripe payment processing and an escrow fund model
-- Live audio/video consultations via Agora
-- Lawyer subscription billing via Stripe
-- KYC identity verification before fund withdrawal
-- Real-time in-app notifications via WebSockets
-
-## Documentation
-
-Additional guides, diagrams, and Postman collections are available in the repository beside this [Readme.md](Readme.md)
-
-### Guides
-
-| File                                                     | Description                                                                                                                |
-| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| [docs/guide/Auth.md](docs/guide/Auth.md)                 | The auth system - JWT lifetimes, 2FA flow, rate limiting, password policy, CORS, and security middleware                   |
-| [docs/guide/Subscription.md](docs/guide/Subscription.md) | Step-by-step guide for testing the subscription API - trial setup, payment methods, vouchers, webhooks, and notifications  |
-| [docs/guide/Google.md](docs/guide/Google.md)             | Frontend integration guide for Google OAuth2 - how to wire up the login button and send the token to the backend           |
-| [docs/guide/TRANSACTION.md](docs/guide/TRANSACTION.md)   | Appointment & transaction state machine - all status transitions for booking, escrow, completion, cancellation, and refund |
-
-### System Diagrams
-
-Full Mermaid diagrams (sequence, DFD, use case, ER) are in [Diagrams.md](Diagrams.md)
-
-| Diagram           | What it shows                                                                               |
-| ----------------- | ------------------------------------------------------------------------------------------- |
-| Sequence Diagram  | Full appointment lifecycle - registration → booking → payment → consultation → fund release |
-| Data Flow Diagram | Data flows across all 10 system processes, 7 external services, and 6 data stores           |
-| Use Case Diagram  | All actors (Client, Lawyer, Admin) and their platform capabilities                          |
-| ER Diagram        | Complete data model across all 8 Django apps (~20 entities and their relationships)         |
-
-### Postman Collections
-
-Ready-to-import collections are in the [`postman/`](postman/) folder. Import any file into Postman to get a pre-built request set for that area of the API.
-
-| Collection                                                                                                  | Covers                                                    |
-| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| [Authentication API](postman/Authentication%20API%20Collection.postman_collection.json)                     | Register, login, 2FA, OTP, password reset, Google OAuth2  |
-| [Vendor Profile API](postman/Vendor%20Profile%20API%20Collection.postman_collection.json)                   | 9-step vendor onboarding, profile management              |
-| [Lawyer API](postman/Lawyer%20API%20Collection.postman_collection.json)                                     | Availability, appointments, wallet, withdrawals, KYC      |
-| [Subscription Management API](postman/Subscription%20Management%20API%20Collection.postman_collection.json) | Plans, payment methods, vouchers, invoices, notifications |
 
 ## Features
 
@@ -143,7 +104,7 @@ The calendar API endpoint also automatically **crosses out unavailability**: any
 - Per-lawyer wallet with running balance
 - All fund movements tracked as typed transactions (payment, payout, refund, commission)
 - Withdrawal requests require completed KYC verification
-- Race-condition-safe balance deduction handeled
+- Race-condition-safe balance deduction
 - Admin approval workflow for payouts
 
 ### Subscriptions
@@ -168,6 +129,41 @@ The calendar API endpoint also automatically **crosses out unavailability**: any
 - Real-time delivery via Django Channels WebSocket consumers
 - Notification types: trial ending, payment failed, appointment reminders, refund approved, withdrawal approved, and more
 - Email notifications via SendGrid (subscription events, password reset, email verification)
+
+## Documentation
+
+Additional guides, diagrams, and Postman collections are available in the repository beside this [Readme.md](Readme.md)
+
+### Guides
+
+| File                                                     | Description                                                                                                                |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| [docs/guide/Auth.md](docs/guide/Auth.md)                 | The auth system - JWT lifetimes, 2FA flow, rate limiting, password policy, CORS, and security middleware                   |
+| [docs/guide/Subscription.md](docs/guide/Subscription.md) | Step-by-step guide for testing the subscription API - trial setup, payment methods, vouchers, webhooks, and notifications  |
+| [docs/guide/Google.md](docs/guide/Google.md)             | Frontend integration guide for Google OAuth2 - how to wire up the login button and send the token to the backend           |
+| [docs/guide/TRANSACTION.md](docs/guide/TRANSACTION.md)   | Appointment & transaction state machine - all status transitions for booking, escrow, completion, cancellation, and refund |
+
+### System Diagrams
+
+Full Mermaid diagrams (sequence, DFD, use case, ER) are in [Diagrams.md](Diagrams.md)
+
+| Diagram           | What it shows                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| Sequence Diagram  | Full appointment lifecycle - registration → booking → payment → consultation → fund release |
+| Data Flow Diagram | Data flows across all 10 system processes, 7 external services, and 6 data stores           |
+| Use Case Diagram  | All actors (Client, Lawyer, Admin) and their platform capabilities                          |
+| ER Diagram        | Complete data model across all 8 Django apps (~20 entities and their relationships)         |
+
+### Postman Collections
+
+Ready-to-import collections are in the [`postman/`](postman/) folder. Import any file into Postman to get a pre-built request set for that area of the API.
+
+| Collection                                                                                                  | Covers                                                    |
+| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [Authentication API](postman/Authentication%20API%20Collection.postman_collection.json)                     | Register, login, 2FA, OTP, password reset, Google OAuth2  |
+| [Vendor Profile API](postman/Vendor%20Profile%20API%20Collection.postman_collection.json)                   | 9-step vendor onboarding, profile management              |
+| [Lawyer API](postman/Lawyer%20API%20Collection.postman_collection.json)                                     | Availability, appointments, wallet, withdrawals, KYC      |
+| [Subscription Management API](postman/Subscription%20Management%20API%20Collection.postman_collection.json) | Plans, payment methods, vouchers, invoices, notifications |
 
 ## Tech Stack
 
