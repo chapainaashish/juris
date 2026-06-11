@@ -40,12 +40,12 @@ Additional guides, diagrams, and Postman collections are available in the reposi
 
 ### Guides
 
-| File                                                     | Description                                                                                                              |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [docs/guide/Auth.md](docs/guide/Auth.md)                       | The auth system — JWT lifetimes, 2FA flow, rate limiting, password policy, CORS, and security middleware                 |
-| [docs/guide/Subscription.md](docs/guide/Subscription.md)       | Step-by-step guide for testing the subscription API — trial setup, payment methods, vouchers, webhooks, and notifications |
-| [docs/guide/Google.md](docs/guide/Google.md)                   | Frontend integration guide for Google OAuth2 — how to wire up the login button and send the token to the backend          |
-| [docs/guide/TRANSACTION.md](docs/guide/TRANSACTION.md)         | Appointment & transaction state machine — all status transitions for booking, escrow, completion, cancellation, and refund |
+| File                                                     | Description                                                                                                                |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| [docs/guide/Auth.md](docs/guide/Auth.md)                 | The auth system - JWT lifetimes, 2FA flow, rate limiting, password policy, CORS, and security middleware                   |
+| [docs/guide/Subscription.md](docs/guide/Subscription.md) | Step-by-step guide for testing the subscription API - trial setup, payment methods, vouchers, webhooks, and notifications  |
+| [docs/guide/Google.md](docs/guide/Google.md)             | Frontend integration guide for Google OAuth2 - how to wire up the login button and send the token to the backend           |
+| [docs/guide/TRANSACTION.md](docs/guide/TRANSACTION.md)   | Appointment & transaction state machine - all status transitions for booking, escrow, completion, cancellation, and refund |
 
 ### System Diagrams
 
@@ -53,7 +53,7 @@ Full Mermaid diagrams (sequence, DFD, use case, ER) are in [Diagrams.md](Diagram
 
 | Diagram           | What it shows                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------- |
-| Sequence Diagram  | Full appointment lifecycle — registration → booking → payment → consultation → fund release |
+| Sequence Diagram  | Full appointment lifecycle - registration → booking → payment → consultation → fund release |
 | Data Flow Diagram | Data flows across all 10 system processes, 7 external services, and 6 data stores           |
 | Use Case Diagram  | All actors (Client, Lawyer, Admin) and their platform capabilities                          |
 | ER Diagram        | Complete data model across all 8 Django apps (~20 entities and their relationships)         |
@@ -94,7 +94,7 @@ Ready-to-import collections are in the [`postman/`](postman/) folder. Import any
 ### Lawyer Profiles & Availability
 
 - Lawyer categories and subcategories
-- Pricing plans (offerings) with per-30-min rates — each plan has an independent price and can be attached to specific time slots
+- Pricing plans (offerings) with per-30-min rates - each plan has an independent price and can be attached to specific time slots
 - Service delivery types per offering: **Physical** (free, in-office), **Audio** (paid, phone), **Video** (paid, Agora RTC)
 - Full overlap validation on save, the API rejects any slot that would conflict with an existing one on the same day
 
@@ -475,20 +475,20 @@ The platform uses a multi-step session-based method. Each step saves progress so
 
 **Availability schedule (powers the booking calendar):**
 
-- Define recurring weekly slots — each slot is a day + time window + pricing plan (e.g., Monday 09:00–17:00 on "Standard Plan").
+- Define recurring weekly slots - each slot is a day + time window + pricing plan (e.g., Monday 09:00–17:00 on "Standard Plan").
 - Use **bulk create** to apply the same slot to multiple days in one request (e.g., set Mon–Fri 09:00–17:00 at once).
 - Use **copy template** to clone an entire day's schedule to other days.
 - The system rejects any overlapping slot on the same day at save time.
 
 **Blocking out time (unavailability):**
 
-- Block specific calendar dates — either all-day or a time range (e.g., 14:00–16:00 for a court appearance).
+- Block specific calendar dates - either all-day or a time range (e.g., 14:00–16:00 for a court appearance).
 - Categorise each block: vacation, sick leave, personal, court appearance, meeting, training, or other.
 - Past blocks can be cleared in bulk; a stats endpoint shows counts by type and the next upcoming block.
 
 **How the frontend uses this:**
 
-- The calendar endpoint (`/availability/calendar/`) returns one object per day in a date range. Each day has `available_slots`, `is_available`, and `total_hours`. Unavailability blocks are already subtracted — the frontend just renders what it receives.
+- The calendar endpoint (`/availability/calendar/`) returns one object per day in a date range. Each day has `available_slots`, `is_available`, and `total_hours`. Unavailability blocks are already subtracted - the frontend just renders what it receives.
 - Tapping a day calls the single-date endpoint to show bookable slots with live pricing.
 - Before submitting a booking, the frontend calls the time-check endpoint to confirm the slot is still free.
 
@@ -586,8 +586,8 @@ Interactive documentation is available at runtime:
 | `GET /api/lawyer/availability/<lawyer_id>/<date>/` | Available slots for a single date                 |
 | `POST /api/lawyer/availability/check-time/`        | Check if a specific time window is free           |
 | `GET /api/lawyer/availability/by-offering/`        | Slots grouped by pricing plan                     |
-| `GET /api/lawyer/availability/`                    | CRUD — list/create availability slots             |
-| `GET/PUT/DELETE /api/lawyer/availability/<id>/`    | CRUD — single slot                                |
+| `GET /api/lawyer/availability/`                    | CRUD - list/create availability slots             |
+| `GET/PUT/DELETE /api/lawyer/availability/<id>/`    | CRUD - single slot                                |
 | `POST /api/lawyer/availability/bulk-create/`       | Create same slot across multiple days             |
 | `POST /api/lawyer/availability/copy-template/`     | Clone one day's schedule to other days            |
 | `DELETE /api/lawyer/availability/clear-all/`       | Remove all slots (lawyer only)                    |
